@@ -24,19 +24,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"下载ts文件";
+    self.title = @"M3U8文件下载";
 
     // 测试链接
-    self.textView.text = @"http://v-cc.dushu.io/video/full/36eb40427f39c74325127827adabf049_cbcb98/playlist.m3u8";
+    self.textView.text = @"https://dco4urblvsasc.cloudfront.net/811/81095_ywfZjAuP/game/1000kbps.m3u8";
 }
 
-// 下载视频列表文件
+// 下载m3u8文件
 - (IBAction)clickDownload {
     if (!self.tipLab.text.length || ![self.textView.text containsString:@"http"]) {
         self.tipLab.text = @"链接不合法";
         return;
     }
-    self.tipLab.text = @"下载视频列表文件";
+    self.tipLab.text = @"下载m3u8文件";
     
     NSString *destinationPath = [self.documentPath stringByAppendingPathComponent:self.textView.text.lastPathComponent];
     
@@ -53,15 +53,18 @@
            }];
 }
 
-// 处理视频列表文件
+// 处理m3u8文件
 - (void)dealPlayList {
-    self.tipLab.text = @"处理视频列表文件";
+    self.tipLab.text = @"处理m3u8文件";
     
+    // 读取m3u8文件内容
     NSString *filePath = [self.documentPath stringByAppendingPathComponent:self.textView.text.lastPathComponent];
     NSString *content = [NSString stringWithContentsOfFile:filePath
                                                   encoding:NSUTF8StringEncoding
                                                      error:nil];
     NSArray *array = [content componentsSeparatedByString:@"\n"];
+    
+    // 筛选出 .ts 文件
     NSMutableArray *listArr = [NSMutableArray arrayWithCapacity:array.count];
     for (NSString *str in array) {
         if ([str containsString:@".ts"]) {
@@ -72,9 +75,11 @@
     NSString *firstStr = listArr.firstObject;
     NSString *videoName = [firstStr componentsSeparatedByString:@"."].firstObject;
     self.tipLab.text = [NSString stringWithFormat:@"共有 %ld 个视频", listArr.count];
+    // 下载 ts 文件
     [self downloadVideoWithArr:listArr andIndex:0 videoName:videoName];
 }
 
+// 循环下载 ts 文件
 - (void)downloadVideoWithArr:(NSArray *)listArr andIndex:(NSInteger)index videoName:(NSString *)videoName {
     if (index >= listArr.count) {
         self.tipLab.text = @"视频下载完成";
@@ -85,7 +90,7 @@
     self.tipLab.text = [NSString stringWithFormat:@"共有 %ld 个ts文件, 下载中：%.2f%%", listArr.count, (float)index/listArr.count * 100];
     self.progressView.progress = (float)index/listArr.count;
     
-    // 文件地址
+    // 拼接ts全路径，有的文件直接包含，不需要拼接
     NSString *downloadURL = [self.textView.text stringByReplacingOccurrencesOfString:self.textView.text.lastPathComponent withString:listArr[index]];
     
     // 存储路径
@@ -109,7 +114,7 @@
 }
 
 
-// 合成视频
+// 合成为一个ts文件
 - (void)combVideos {
     NSString *fileName = @"合成原文件.ts";
     NSString *filePath = [[self documentPath] stringByAppendingPathComponent:fileName];
@@ -124,10 +129,13 @@
     NSMutableData *dataArr = [NSMutableData alloc];
     int videoCount = 0;
     for (NSString *str in contentArr) {
+        // 按顺序拼接 TS 文件
         if ([str containsString:@"video_"]) {
             NSString *videoName = [NSString stringWithFormat:@"video_%d.%@",videoCount, str.pathExtension];
             NSString *videoPath = [[self videoPath] stringByAppendingPathComponent:videoName];
+            // 读出数据
             NSData *data = [[NSData alloc] initWithContentsOfFile:videoPath];
+            // 合并数据
             [dataArr appendData:data];
             videoCount++;
         }

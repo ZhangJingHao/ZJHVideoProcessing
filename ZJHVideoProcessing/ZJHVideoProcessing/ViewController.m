@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.nameArr = @[ @"下载ts文件",
+    self.nameArr = @[ @"M3U8文件下载",
                       @"视频格式转码"];
 }
 

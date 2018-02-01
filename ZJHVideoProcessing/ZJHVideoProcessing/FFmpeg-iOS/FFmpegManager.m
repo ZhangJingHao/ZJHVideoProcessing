@@ -30,7 +30,7 @@
     return instance;
 }
 
-// 开始转换
+// 转换视频
 - (void)converWithInputPath:(NSString *)inputPath
                  outputPath:(NSString *)outpath
                processBlock:(void (^)(float process))processBlock
@@ -40,6 +40,7 @@
     self.isBegin = NO;
     
     // ffmpeg语法，可根据需求自行更改
+    // !#$ 为分割标记符，也可以使用空格代替
     NSString *commandStr = [NSString stringWithFormat:@"ffmpeg!#$-ss!#$00:00:00!#$-i!#$%@!#$-b:v!#$2000K!#$-y!#$%@", inputPath, outpath];
     
     // 放在子线程运行
@@ -64,7 +65,8 @@
         strcpy(argv[i],[[argv_array objectAtIndex:i] UTF8String]);
     }
     
-    NSString *finalCommand = @"运行参数:";
+    // 打印日志
+    NSString *finalCommand = @"ffmpeg 运行参数:";
     for (NSString *temp in argv_array) {
         finalCommand = [finalCommand stringByAppendingFormat:@"%@",temp];
     }
