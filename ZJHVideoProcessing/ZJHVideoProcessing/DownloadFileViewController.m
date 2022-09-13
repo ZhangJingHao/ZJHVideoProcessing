@@ -2,8 +2,8 @@
 //  DownloadFileViewController.m
 //  ZJHVideoProcessing
 //
-//  Created by ZhangJingHao2345 on 2018/1/30.
-//  Copyright © 2018年 ZhangJingHao2345. All rights reserved.
+//  Created by ZJH on 2018/1/30.
+//  Copyright © 2018年 ZJH. All rights reserved.
 //
 
 #import "DownloadFileViewController.h"

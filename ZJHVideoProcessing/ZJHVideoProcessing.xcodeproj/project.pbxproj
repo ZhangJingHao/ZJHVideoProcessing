@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21E224AA28D04C4100493FAB /* ZJHURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E224A828D04C4100493FAB /* ZJHURLProtocol.m */; };
+		21E224AB28D04C4100493FAB /* ZJHSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E224A928D04C4100493FAB /* ZJHSessionConfiguration.m */; };
+		21E224AE28D04DD900493FAB /* ZJHUIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E224AD28D04DD900493FAB /* ZJHUIWebViewController.m */; };
+		21E224B128D04DE900493FAB /* ZJHWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E224B028D04DE900493FAB /* ZJHWKWebViewController.m */; };
 		2A7FBD1920215878006A84DD /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FBD1820215878006A84DD /* video.mp4 */; };
 		2AA06664201EB5660099FBFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA06663201EB5660099FBFE /* AppDelegate.m */; };
 		2AA06667201EB5660099FBFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA06666201EB5660099FBFE /* ViewController.m */; };
@@ -54,6 +58,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21E224A628D04C4100493FAB /* ZJHSessionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHSessionConfiguration.h; sourceTree = "<group>"; };
+		21E224A728D04C4100493FAB /* ZJHURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHURLProtocol.h; sourceTree = "<group>"; };
+		21E224A828D04C4100493FAB /* ZJHURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHURLProtocol.m; sourceTree = "<group>"; };
+		21E224A928D04C4100493FAB /* ZJHSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHSessionConfiguration.m; sourceTree = "<group>"; };
+		21E224AC28D04DD900493FAB /* ZJHUIWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJHUIWebViewController.h; sourceTree = "<group>"; };
+		21E224AD28D04DD900493FAB /* ZJHUIWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJHUIWebViewController.m; sourceTree = "<group>"; };
+		21E224AF28D04DE900493FAB /* ZJHWKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJHWKWebViewController.h; sourceTree = "<group>"; };
+		21E224B028D04DE900493FAB /* ZJHWKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJHWKWebViewController.m; sourceTree = "<group>"; };
 		2A7FBD1820215878006A84DD /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		2AA0665F201EB5660099FBFE /* ZJHVideoProcessing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJHVideoProcessing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA06662201EB5660099FBFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -264,6 +276,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21E224A528D04C4100493FAB /* CustomProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				21E224A628D04C4100493FAB /* ZJHSessionConfiguration.h */,
+				21E224A728D04C4100493FAB /* ZJHURLProtocol.h */,
+				21E224A828D04C4100493FAB /* ZJHURLProtocol.m */,
+				21E224A928D04C4100493FAB /* ZJHSessionConfiguration.m */,
+			);
+			path = CustomProtocol;
+			sourceTree = "<group>";
+		};
 		2AA06656201EB5660099FBFE = {
 			isa = PBXGroup;
 			children = (
@@ -284,12 +307,17 @@
 		2AA06661201EB5660099FBFE /* ZJHVideoProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				21E224A528D04C4100493FAB /* CustomProtocol */,
 				2AA50B8220206FB000EFC18B /* AFNetworking */,
 				2AA06731201F04CD0099FBFE /* FFmpeg-iOS */,
 				2AA06662201EB5660099FBFE /* AppDelegate.h */,
 				2AA06663201EB5660099FBFE /* AppDelegate.m */,
 				2AA06665201EB5660099FBFE /* ViewController.h */,
 				2AA06666201EB5660099FBFE /* ViewController.m */,
+				21E224AC28D04DD900493FAB /* ZJHUIWebViewController.h */,
+				21E224AD28D04DD900493FAB /* ZJHUIWebViewController.m */,
+				21E224AF28D04DE900493FAB /* ZJHWKWebViewController.h */,
+				21E224B028D04DE900493FAB /* ZJHWKWebViewController.m */,
 				2AA50B9C202072E000EFC18B /* DownloadFileViewController.h */,
 				2AA50B9D202072E000EFC18B /* DownloadFileViewController.m */,
 				2AA50B9E202072E000EFC18B /* DownloadFileViewController.xib */,
@@ -708,10 +736,14 @@
 				2AA50B9F202072E000EFC18B /* DownloadFileViewController.m in Sources */,
 				2AA067C7201F04CE0099FBFE /* cmdutils.c in Sources */,
 				2AA06667201EB5660099FBFE /* ViewController.m in Sources */,
+				21E224AE28D04DD900493FAB /* ZJHUIWebViewController.m in Sources */,
 				2AA50B8120205D3400EFC18B /* FFmpegManager.m in Sources */,
 				2AA06672201EB5660099FBFE /* main.m in Sources */,
 				2AA50B9520206FB000EFC18B /* AFSecurityPolicy.m in Sources */,
 				2AA067C8201F04CE0099FBFE /* ffmpeg.c in Sources */,
+				21E224AA28D04C4100493FAB /* ZJHURLProtocol.m in Sources */,
+				21E224AB28D04C4100493FAB /* ZJHSessionConfiguration.m in Sources */,
+				21E224B128D04DE900493FAB /* ZJHWKWebViewController.m in Sources */,
 				2AA50B9220206FB000EFC18B /* AFURLSessionManager.m in Sources */,
 				2AA06664201EB5660099FBFE /* AppDelegate.m in Sources */,
 				2AA50BA4202072F900EFC18B /* ConverFileViewController.m in Sources */,
