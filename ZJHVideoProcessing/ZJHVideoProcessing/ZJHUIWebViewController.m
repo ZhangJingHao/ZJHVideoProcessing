@@ -7,11 +7,13 @@
 //
 
 #import "ZJHUIWebViewController.h"
+#import "DownloadFileViewController.h"
 
 @interface ZJHUIWebViewController () <UIWebViewDelegate>
 
 @property (nonatomic, weak) UIWebView *webView;
 
+@property (nonatomic, assign) BOOL isJumpTag;
 
 @end
 
@@ -19,13 +21,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    CGFloat statusH = [UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat navH = self.navigationController.navigationBar.frame.size.height;
+    CGFloat webH = self.view.frame.size.height - statusH - navH;
+    CGRect webF = CGRectMake(0, navH + statusH, self.view.frame.size.width, webH);
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:webF];
     [self.view addSubview:webView];
     self.webView = webView;
     self.webView.delegate = self;
     
     NSString *urlStr = @"http:www.baidu.com";
+    if (self.urlStr) {
+        urlStr = self.urlStr;
+    }
     NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlStr]];
     [self.webView loadRequest:req];
     
@@ -82,10 +92,24 @@
     if (!videoUrlStr.length) {
         NSLog(@"未能检测到视频链接");
     } else {
-        NSLog(@"videoUrlStr == %@",videoUrlStr);
+        if (self.isJumpTag) {
+            return;
+        }
         
+        NSLog(@"检测到视频链接 videoUrlStr == %@",videoUrlStr);
+        DownloadFileViewController *vc = [DownloadFileViewController new];
+        vc.videoUrl = videoUrlStr;
+        vc.isAutoDownLoad = self.isAutoLoadVideo;
+        vc.outputPath = self.outputPath;
+        [self.navigationController pushViewController:vc animated:YES];
+        vc.completeBlock = self.completeBlock;
+        
+        self.isJumpTag = YES;
+        
+        if (self.videoUrlBlock) {
+            self.videoUrlBlock(videoUrlStr);
+        }
     }
-    
 }
 
 #pragma mark - UIWebViewDelegate
@@ -108,10 +132,13 @@
     NSString *titleHtmlInfo = [webView stringByEvaluatingJavaScriptFromString:htmlTitle];
     self.title = titleHtmlInfo;
     
-    // 获取网页的一个值
-//    NSString *htmlNum = @"document.getElementById('title').innerText";
-//    NSString *numHtmlInfo = [web stringByEvaluatingJavaScriptFromString:htmlNum];
-//    NSLog(@"%@",numHtmlInfo);
+    if (self.isAutoLoadVideo) {
+        double time = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)time*NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self clickDownloadItem];
+        });
+    }
 }
 
 @end

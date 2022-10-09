@@ -27,8 +27,8 @@
 
     self.nameArr = @[ @"M3U8文件下载", @"视频格式转码", @"接口请求", @"UIWebView", @"WKWebView"];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:4 inSection:0];
-    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+//    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -71,7 +71,6 @@
         ZJHWKWebViewController *vc = [ZJHWKWebViewController new];
         [self.navigationController pushViewController:vc animated:YES];
     }
-
 }
 
 - (void)requestNetworkData {
@@ -97,5 +96,6 @@
         NSLog(@"获取数据失败：%@", error);
     }];
 }
+
 
 @end

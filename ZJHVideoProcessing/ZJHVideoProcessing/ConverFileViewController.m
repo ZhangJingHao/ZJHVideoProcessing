@@ -45,21 +45,32 @@
         return ;
     }
     
+    __weak typeof(self) weakSelf = self;
     [[FFmpegManager sharedManager] converWithInputPath:self.inputView.text
                                             outputPath:self.outputView.text
                                           processBlock:^(float process) {
-                                              self.tipLab.text = [NSString stringWithFormat:@"转码中 %.2f%%", process * 100];
-                                              self.progressView.progress = process;
-                                          }
+        weakSelf.tipLab.text = [NSString stringWithFormat:@"转码中 %.2f%%", process * 100];
+        weakSelf.progressView.progress = process;
+    }
                                        completionBlock:^(NSError *error) {
-                                           if (error) {
-                                               NSLog(@"转码失败 : %@", error);
-                                               self.tipLab.text = @"转码失败";
-                                           } else {
-                                               NSLog(@"转码成功，请在相应路径查看，默认在沙盒Documents路径");
-                                               self.tipLab.text = @"恭喜，转码成功！";
-                                           }
-                                       }];
+        if (error) {
+            NSLog(@"转码失败 : %@", error);
+            weakSelf.tipLab.text = @"转码失败";
+        } else {
+            NSLog(@"转码成功，请在相应路径查看，默认在沙盒Documents路径");
+            weakSelf.tipLab.text = @"恭喜，转码成功！";
+            
+            if (weakSelf.isAutoDownLoad) { // 自动删除原 ts 文件
+                NSFileManager *fileMgr = [NSFileManager defaultManager];
+                [fileMgr removeItemAtPath:weakSelf.inputView.text error:nil];
+            }
+        }
+        
+        if (weakSelf.completeBlock) {
+            BOOL isSucc = error ? NO : YES;
+            weakSelf.completeBlock(isSucc);
+        }
+    }];
     
 }
 

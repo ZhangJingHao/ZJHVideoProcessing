@@ -10,4 +10,12 @@
 
 @interface DownloadFileViewController : UIViewController
 
+@property (nonatomic, copy) NSString *videoUrl;
+
+@property (nonatomic, assign) BOOL isAutoDownLoad;
+
+@property (nonatomic, copy) NSString *outputPath;
+
+@property (nonatomic, copy) void (^completeBlock)(BOOL isSucc);
+
 @end

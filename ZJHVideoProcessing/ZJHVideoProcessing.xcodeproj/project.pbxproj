@@ -11,6 +11,7 @@
 		21E224AB28D04C4100493FAB /* ZJHSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E224A928D04C4100493FAB /* ZJHSessionConfiguration.m */; };
 		21E224AE28D04DD900493FAB /* ZJHUIWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E224AD28D04DD900493FAB /* ZJHUIWebViewController.m */; };
 		21E224B128D04DE900493FAB /* ZJHWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E224B028D04DE900493FAB /* ZJHWKWebViewController.m */; };
+		21E224B728D05F7700493FAB /* ZJHVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E224B628D05F7700493FAB /* ZJHVideoTool.m */; };
 		2A7FBD1920215878006A84DD /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2A7FBD1820215878006A84DD /* video.mp4 */; };
 		2AA06664201EB5660099FBFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA06663201EB5660099FBFE /* AppDelegate.m */; };
 		2AA06667201EB5660099FBFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA06666201EB5660099FBFE /* ViewController.m */; };
@@ -66,6 +67,8 @@
 		21E224AD28D04DD900493FAB /* ZJHUIWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJHUIWebViewController.m; sourceTree = "<group>"; };
 		21E224AF28D04DE900493FAB /* ZJHWKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJHWKWebViewController.h; sourceTree = "<group>"; };
 		21E224B028D04DE900493FAB /* ZJHWKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJHWKWebViewController.m; sourceTree = "<group>"; };
+		21E224B528D05F7700493FAB /* ZJHVideoTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJHVideoTool.h; sourceTree = "<group>"; };
+		21E224B628D05F7700493FAB /* ZJHVideoTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJHVideoTool.m; sourceTree = "<group>"; };
 		2A7FBD1820215878006A84DD /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		2AA0665F201EB5660099FBFE /* ZJHVideoProcessing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJHVideoProcessing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA06662201EB5660099FBFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				2AA06663201EB5660099FBFE /* AppDelegate.m */,
 				2AA06665201EB5660099FBFE /* ViewController.h */,
 				2AA06666201EB5660099FBFE /* ViewController.m */,
+				21E224B528D05F7700493FAB /* ZJHVideoTool.h */,
+				21E224B628D05F7700493FAB /* ZJHVideoTool.m */,
 				21E224AC28D04DD900493FAB /* ZJHUIWebViewController.h */,
 				21E224AD28D04DD900493FAB /* ZJHUIWebViewController.m */,
 				21E224AF28D04DE900493FAB /* ZJHWKWebViewController.h */,
@@ -734,6 +739,7 @@
 				2AA50B9020206FB000EFC18B /* AFURLResponseSerialization.m in Sources */,
 				2AA50B9420206FB000EFC18B /* AFNetworkReachabilityManager.m in Sources */,
 				2AA50B9F202072E000EFC18B /* DownloadFileViewController.m in Sources */,
+				21E224B728D05F7700493FAB /* ZJHVideoTool.m in Sources */,
 				2AA067C7201F04CE0099FBFE /* cmdutils.c in Sources */,
 				2AA06667201EB5660099FBFE /* ViewController.m in Sources */,
 				21E224AE28D04DD900493FAB /* ZJHUIWebViewController.m in Sources */,

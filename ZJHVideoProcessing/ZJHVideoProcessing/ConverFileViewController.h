@@ -12,5 +12,8 @@
 
 @property (nonatomic, copy) NSString *inputPath;
 @property (nonatomic, copy) NSString *outputPath;
+@property (nonatomic, assign) BOOL isAutoDownLoad;
+
+@property (nonatomic, copy) void (^completeBlock)(BOOL isSucc);
 
 @end
